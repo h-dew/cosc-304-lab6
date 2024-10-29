@@ -13,36 +13,6 @@ CREATE TABLE student (
  gpa DECIMAL(3,2),
  PRIMARY KEY (sid));
 
-CREATE TABLE prof (
- pname VARCHAR(50) NOT NULL,
- dname VARCHAR(20),
- PRIMARY KEY (pname));
-
-CREATE TABLE course (
- cnum CHAR(8) NOT NULL,
- dname VARCHAR(20),
- cname VARCHAR(50),
- PRIMARY KEY (cnum));
-
-CREATE TABLE section (
-  cnum CHAR(8) NOT NULL,
-  secnum CHAR(3) NOT NULL,
-  pname VARCHAR(50),
-  PRIMARY KEY (cnum,secnum),
-  FOREIGN KEY (cnum) REFERENCES course(cnum) ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (pname) REFERENCES prof(pname) ON DELETE SET NULL ON UPDATE CASCADE);
-  
-CREATE TABLE enroll (
-  sid CHAR(8) NOT NULL,
-  cnum CHAR(8) NOT NULL,
-  secnum CHAR(3) NOT NULL,
-  grade DECIMAL(3,2),
-  PRIMARY KEY (cnum,secnum,sid),
-  FOREIGN KEY (cnum) REFERENCES course(cnum) ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (sid) REFERENCES student(sid) ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (cnum,secnum) REFERENCES section(cnum,secnum) ON DELETE CASCADE ON UPDATE CASCADE);
-
-
 INSERT student VALUES('00005465','Joe Smith','M','1997-5-1',3.20);
 INSERT student VALUES('00112233','Trisha Cavanugh','F','1994-10-31',2.96);
 INSERT student VALUES('00324534','Tony Tenson','M','1997-3-21',3.21);
