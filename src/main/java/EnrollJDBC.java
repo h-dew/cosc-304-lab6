@@ -133,8 +133,7 @@ public class EnrollJDBC
 	 */
 	public Connection connect() throws SQLException
 	{
-	    // TODO: Fill in your connection information. Do NOT connect to university database (lab 2). Connect to testuser or mydb databases.
-		String url = "jdbc:mysql://localhost/testuser"; 
+		String url = "jdbc:mysql://localhost/testuser";
 		String uid = "testuser";
 		// lol this is horrible practice but idc :p
 		String pw = "c304ab";
@@ -212,7 +211,20 @@ public class EnrollJDBC
         StringBuilder output = new StringBuilder();
        
     	// Use a PreparedStatement for this query.
-        // TODO: Traverse ResultSet and use StringBuilder.append() to add columns/rows to output string        
+		PreparedStatement stmt = con.prepareStatement("SELECT * FROM student");
+
+		ResultSet rslt = stmt.executeQuery();
+
+		String rowoutput;
+		while(rslt.next()) {
+			rowoutput = rslt.getString("sid") + ", "
+					+ rslt.getString("sname") + ", "
+					+ rslt.getString("sex") + ", "
+					+ rslt.getDate("birthdate") + ", "
+					+ rslt.getBigDecimal("gpa") + " \n";
+
+			output.append(rowoutput);
+		}
         
         return output.toString();
     }

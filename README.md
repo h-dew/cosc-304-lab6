@@ -7,9 +7,9 @@ did somebody say database???? oooh boy you're gonna get me all riled up if u kee
 - literally everything except the setup
 
 <table>
-<tr><th>Operation</th>														<th width="100">Marks</th></tr>
+<tr><th>Operation</th>														<th width="100">Finished?</th></tr>
 <tr><td>
-<tr><td>List all students in the database (<tt>listAllStudents</tt>)</td>			<td>unfinished</td></tr>
+<tr><td>List all students in the database (<tt>listAllStudents</tt>)</td>			<td>finished</td></tr>
 <tr><td>List all professors in a department (<tt>listDeptProfessors</tt>)</td>		<td>unfinished</td></tr>
 <tr><td>List all students in a course (<tt>listCourseStudents</tt>)</td>			<td>unfinished</td></tr>
 <tr><td>Compute student GPA (<tt>computeGPA</tt>)</td>								<td>unfinished</td></tr>
