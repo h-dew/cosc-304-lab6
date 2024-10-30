@@ -224,7 +224,6 @@ public class OrderJDBC
      */
     public ResultSet computeOrderTotal(String orderId) throws SQLException
     {
-        // TODO: Use a PreparedStatement for this query.  Return the ResultSet.
 		PreparedStatement stmt = con.prepareStatement("SELECT SUM(Quantity * Price) AS orderTotal FROM OrderedProduct WHERE OrderId = ?");
 
 		stmt.setString(1,orderId);
@@ -342,8 +341,11 @@ public class OrderJDBC
     public ResultSet query1() throws SQLException
     {
         System.out.println("\nExecuting query #1.");
-        // TODO: Execute the SQL query and return a ResultSet.
-        return null;
+
+		PreparedStatement stmt = con.prepareStatement("SELECT ProductId FROM Product " +
+				"WHERE ProductId NOT IN (SELECT ProductId FROM OrderedProduct)");
+
+        return stmt.executeQuery();
     }
     
     /**
@@ -357,12 +359,19 @@ public class OrderJDBC
     public ResultSet query2() throws SQLException
     {
         System.out.println("\nExecuting query #2.");
-        // TODO: Execute the SQL query and return a ResultSet.
-        return null;   
+
+		PreparedStatement stmt = con.prepareStatement("SELECT Orders.OrderId, Orders.Total " +
+				"FROM (SELECT OrderId, SUM(Quantity * Price) as ProductTotal " +
+				"FROM OrderedProduct GROUP BY OrderId) AS P JOIN Orders ON Orders.OrderId = P.OrderId " +
+				"WHERE Orders.total != P.ProductTotal");
+
+        return stmt.executeQuery();
     }
     
     /**
-     * Return for each customer their id, name and average total order amount for orders starting on January 1, 2024 (inclusive). Only show customers that have placed at least 2 orders.
+     * Return for each customer their id, name and average total order amount for orders
+	 * starting on January 1, 2024 (inclusive).
+	 * Only show customers that have placed at least 2 orders.
      * Sort customers in ascending order by customer id.
      * Format:
      * CustomerId, CustomerName, avgTotal
@@ -376,8 +385,15 @@ public class OrderJDBC
     public ResultSet query3() throws SQLException
     {
         System.out.println("\nExecuting query #3.");
-        // TODO: Execute the SQL query and return a ResultSet.
-        return null;      
+
+		PreparedStatement stmt = con.prepareStatement("SELECT Customer.CustomerId, Customer.CustomerName, AVG(Orders.Total) as avgTotal " +
+						"FROM Customer JOIN Orders ON Customer.CustomerId = Orders.CustomerId " +
+						"WHERE OrderDate >= DATE('2024-01-01') " +
+						"GROUP BY Customer.CustomerId " +
+						"HAVING COUNT(Customer.CustomerId) > 1 " +
+						"ORDER BY Customer.CustomerId ASC");
+
+        return stmt.executeQuery();
     }
     
 	/**
@@ -393,8 +409,16 @@ public class OrderJDBC
 	public ResultSet query4() throws SQLException
 	{
 		System.out.println("\nExecuting query #4.");
-        // TODO: Execute the SQL query and return a ResultSet.
-        return null;	
+
+		PreparedStatement stmt = con.prepareStatement("SELECT Employee.EmployeeId, EmployeeName, COUNT(Employee.EmployeeId) as orderCount " +
+						"FROM (SELECT EmployeeId " +
+						"FROM OrderedProduct JOIN Orders ON OrderedProduct.OrderId = Orders.OrderId " +
+						"WHERE OrderedProduct.Quantity >= 5 " +
+						"GROUP BY Orders.OrderId) AS P JOIN Employee ON P.EmployeeId = Employee.EmployeeId " +
+						"GROUP BY Employee.EmployeeId " +
+						"HAVING COUNT(Employee.EmployeeId) >= 2");
+
+        return stmt.executeQuery();
 	}
 		
 	/*

@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e772b8b9-a53b-43bf-a80c-6ec6bbe090d3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/bin/order.ddl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/OrderJDBC.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/TestOrderJDBC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/bin/university.ddl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/bin/university.ddl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/EnrollJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/EnrollJDBC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/OrderJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/OrderJDBC.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +111,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730221402914</updated>
-      <workItem from="1730221404008" duration="12512000" />
+      <workItem from="1730221404008" duration="17512000" />
     </task>
     <servers />
   </component>
