@@ -1,5 +1,5 @@
 # INFO
-the files with enroll in their filename are for a previous version of the lab,, keeping them to cross-reffing stuff
+the files with enroll in their filename are for a previous version of the lab,, keeping them to cross-ref stuff
 
 
 # TODO
